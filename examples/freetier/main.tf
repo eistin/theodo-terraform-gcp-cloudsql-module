@@ -19,6 +19,7 @@ module "cloudsql_freetier" {
   backup_enabled        = true
   backup_start_time     = "03:00"
   backup_retention_days = 7
+  binary_log_enabled    = false # Disabled to save resources in development
 
   # Network configuration (public IP for simplicity in dev)
   ipv4_enabled        = true

@@ -31,6 +31,7 @@ No modules.
 | <a name="input_backup_enabled"></a> [backup\_enabled](#input\_backup\_enabled) | Whether to enable automated backups | `bool` | `true` | no |
 | <a name="input_backup_retention_days"></a> [backup\_retention\_days](#input\_backup\_retention\_days) | Number of days to retain backups | `number` | `7` | no |
 | <a name="input_backup_start_time"></a> [backup\_start\_time](#input\_backup\_start\_time) | The start time of daily backups in HH:MM format (UTC) | `string` | `"03:00"` | no |
+| <a name="input_binary_log_enabled"></a> [binary\_log\_enabled](#input\_binary\_log\_enabled) | Whether to enable binary logging. Required for point-in-time recovery and replication. Recommended for production instances. | `bool` | `true` | no |
 | <a name="input_database_charset"></a> [database\_charset](#input\_database\_charset) | The charset for the default database | `string` | `"utf8mb4"` | no |
 | <a name="input_database_collation"></a> [database\_collation](#input\_database\_collation) | The collation for the default database | `string` | `"utf8mb4_unicode_ci"` | no |
 | <a name="input_database_name"></a> [database\_name](#input\_database\_name) | The name of the default database to create | `string` | `"default"` | no |

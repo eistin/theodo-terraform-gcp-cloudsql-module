@@ -15,7 +15,7 @@ resource "google_sql_database_instance" "main" {
     backup_configuration {
       enabled                        = var.backup_enabled
       start_time                     = var.backup_start_time
-      binary_log_enabled             = var.backup_enabled
+      binary_log_enabled             = var.binary_log_enabled
       transaction_log_retention_days = var.backup_retention_days
       backup_retention_settings {
         retained_backups = var.backup_retention_days

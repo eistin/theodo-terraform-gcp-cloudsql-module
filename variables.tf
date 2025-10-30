@@ -102,6 +102,12 @@ variable "backup_retention_days" {
   }
 }
 
+variable "binary_log_enabled" {
+  description = "Whether to enable binary logging. Required for point-in-time recovery and replication. Recommended for production instances."
+  type        = bool
+  default     = true
+}
+
 variable "ipv4_enabled" {
   description = "Whether the instance should be assigned a public IPv4 address"
   type        = bool

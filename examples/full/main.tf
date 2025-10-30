@@ -30,6 +30,7 @@ module "cloudsql_production" {
   backup_enabled        = true
   backup_start_time     = "03:00"
   backup_retention_days = 30
+  binary_log_enabled    = true # Enabled for point-in-time recovery
 
   # Network configuration (private IP recommended)
   ipv4_enabled        = false
