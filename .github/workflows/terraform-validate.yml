@@ -1,0 +1,90 @@
+name: Terraform Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Terraform Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.0
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init (Root Module)
+        run: terraform init -backend=false
+
+      - name: Terraform Validate (Root Module)
+        run: terraform validate
+
+      - name: Terraform Init (Free Tier Example)
+        working-directory: examples/freetier
+        run: terraform init -backend=false
+
+      - name: Terraform Validate (Free Tier Example)
+        working-directory: examples/freetier
+        run: terraform validate
+
+      - name: Terraform Init (Full Example)
+        working-directory: examples/full
+        run: terraform init -backend=false
+
+      - name: Terraform Validate (Full Example)
+        working-directory: examples/full
+        run: terraform validate
+
+  documentation:
+    name: Documentation Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup terraform-docs
+        uses: terraform-docs/gh-actions@v1.2.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "false"
+          fail-on-diff: "true"
+
+  lint:
+    name: TFLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: latest
+
+      - name: Initialize TFLint
+        run: tflint --init
+
+      - name: Run TFLint (Root Module)
+        run: tflint --format compact
+
+      - name: Run TFLint (Free Tier Example)
+        working-directory: examples/freetier
+        run: tflint --format compact
+
+      - name: Run TFLint (Full Example)
+        working-directory: examples/full
+        run: tflint --format compact
