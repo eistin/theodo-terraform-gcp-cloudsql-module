@@ -1,0 +1,8 @@
+# GCP Project Configuration
+project_id = "my-gcp-project-id"
+
+# Region Configuration
+region = "us-central1"
+
+# Instance Configuration
+instance_name = "mysql-freetier-dev"
