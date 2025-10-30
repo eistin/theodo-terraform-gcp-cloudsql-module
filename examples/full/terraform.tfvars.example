@@ -1,0 +1,11 @@
+# GCP Project Configuration
+project_id = "my-gcp-project-id"
+
+# Region Configuration
+region = "us-central1"
+
+# Instance Configuration
+instance_name = "mysql-production"
+
+# Network Configuration - Private IP (recommended)
+private_network = "projects/my-gcp-project-id/global/networks/my-vpc"
