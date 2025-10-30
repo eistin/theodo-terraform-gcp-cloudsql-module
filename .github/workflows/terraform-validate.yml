@@ -83,8 +83,8 @@ jobs:
 
       - name: Run TFLint (Free Tier Example)
         working-directory: examples/freetier
-        run: tflint --format compact
+        run: tflint --config=../../.tflint.hcl --format compact
 
       - name: Run TFLint (Full Example)
         working-directory: examples/full
-        run: tflint --format compact
+        run: tflint --config=../../.tflint.hcl --format compact
